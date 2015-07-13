@@ -1,0 +1,22 @@
+{
+	"name" : " mestrona/forwardtoconfigurable",
+	"type" : "magento-module",
+	"description" : "Forward to configurable",
+	"homepage" : "http://www.twitter.com/s3lf",
+	"require" : {
+		"magento-hackathon/magento-composer-installer" : "~2.1.1"
+	},
+	"authors" : [{
+			"name" : "Alexander Menk"
+		}
+	],
+	"extra" : {
+		"magento_connect" : {
+			"channel" : "local",
+			"php_min" : "5.3.0",
+			"php_max" : "6.0.0",
+			"stability" : "beta",
+			"summary" : "Forward to configurable"
+		}
+	}
+}
