@@ -60,11 +60,15 @@ class Mestrona_ForwardToConfigurable_Model_Observer extends Mage_Core_Model_Abst
             return;
         }
         
-        /* @var $currentProduct Mage_Catalog_Model_Product */
-        $dealhelper = Mage::helper('dailydeals');
-        $dealproduct = Mage::getModel('catalog/product')->load($productId);
-        if($dealhelper->isDealEnabled($dealproduct)){
-            return;
+        $modules = Mage::getConfig()->getNode('modules')->children();
+        $modulesArray = (array)$modules;
+        if(isset($modulesArray['Webinse_DailyDeals'])) {
+            /* @var $currentProduct Mage_Catalog_Model_Product */
+            $dealhelper = Mage::helper('dailydeals');
+            $dealproduct = Mage::getModel('catalog/product')->load($productId);
+            if($dealhelper->isDealEnabled($dealproduct)){
+                return;
+            }
         }
         
         while (count($parentIds) > 0) {
