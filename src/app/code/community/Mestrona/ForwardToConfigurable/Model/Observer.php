@@ -59,7 +59,14 @@ class Mestrona_ForwardToConfigurable_Model_Observer extends Mage_Core_Model_Abst
         if (empty($parentIds)) { // does not have a parent -> nothing to do
             return;
         }
-
+        
+        /* @var $currentProduct Mage_Catalog_Model_Product */
+        $dealhelper = Mage::helper('dailydeals');
+        $dealproduct = Mage::getModel('catalog/product')->load($productId);
+        if($dealhelper->isDealEnabled($dealproduct)){
+            return;
+        }
+        
         while (count($parentIds) > 0) {
             $parentId = array_shift($parentIds);
             /* @var $parentProduct Mage_Catalog_Model_Product */
