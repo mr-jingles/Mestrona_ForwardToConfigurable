@@ -60,9 +60,7 @@ class Mestrona_ForwardToConfigurable_Model_Observer extends Mage_Core_Model_Abst
             return;
         }
         
-        $modules = Mage::getConfig()->getNode('modules')->children();
-        $modulesArray = (array)$modules;
-        if(isset($modulesArray['Webinse_DailyDeals'])) {
+        if(Mage::helper('core')->isModuleEnabled('Webinse_DailyDeals')) {
             /* @var $currentProduct Mage_Catalog_Model_Product */
             $dealhelper = Mage::helper('dailydeals');
             $dealproduct = Mage::getModel('catalog/product')->load($productId);
