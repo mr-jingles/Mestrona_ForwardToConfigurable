@@ -99,7 +99,8 @@ class Mestrona_ForwardToConfigurable_Model_Observer extends Mage_Core_Model_Abst
         $currentProduct->load($productId);
 
         $params = new Varien_Object();
-        $params->setCategoryId(false);
+        /*set category id of current product */
+        $params->setCategoryId($currentProduct->getCategoryId());
         $params->setConfigureMode(true);
         $buyRequest = new Varien_Object();
         $buyRequest->setSuperAttribute($this->generateConfigData($parentProduct, $currentProduct)); // example format: array(525 => "99"));
